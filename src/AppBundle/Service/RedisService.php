@@ -86,4 +86,16 @@ class RedisService
     {
         return $this->_predis->sMembers($key);
     }
+
+    /**
+     * Set expiry on key
+     * in seconds
+     * @param string $key
+     * @param int $seconds
+     * @return type
+     */
+    public function expire($key, $seconds)
+    {
+        return $this->_predis->expire($key , $seconds);
+    }
 }

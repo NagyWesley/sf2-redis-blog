@@ -22,6 +22,7 @@ class BlogService implements ContainerAwareInterface
 {
 
     CONST HOMEPAGE_BLOGS_KEY = 'home_page_blogs';
+    CONST HOMEPAGE_BLOGS_EXPIRY = 10; //in seconds
     /**
      *
      * @var ContainerInterface
@@ -53,6 +54,7 @@ class BlogService implements ContainerAwareInterface
             $content[] = $blog->getContent();
         }
         $redis->sAdd(self::HOMEPAGE_BLOGS_KEY,$content);
+        $redis->expire(self::HOMEPAGE_BLOGS_KEY , self::HOMEPAGE_BLOGS_EXPIRY);
 
         return $content;
     }

@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1> Blog Homepage</h1>
-    <div> This is the fastes blog home page</div>
+    <h1> {% trans %}Blog Homepage{% endtrans %}</h1>
+    <div> {% trans %}This is the fastes blog home page{% endtrans %}</div>
     <ul>
     {% for blog in blogs%}
-        <li>{{ blog.conent() }}</li>
+        <li>{{ blog }}</li>
     {% endfor %}
 </ul>
 {% endblock %}

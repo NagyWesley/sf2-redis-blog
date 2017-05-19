@@ -16,15 +16,15 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-      
+//        $this->get('translator')->setLocale('en');
         /**
          * @var BlogService
          */
         $blogService = $this->get('blog_service');
-        // replace this example code with whatever you need
+        $blogs = $blogService->getAllBlogs();
         return $this->render('default/index.html.twig', [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..') . DIRECTORY_SEPARATOR,
-                'blogs' => $blogService->getAllBlogs()
+                'blogs' => $blogs
         ]);
     }
 

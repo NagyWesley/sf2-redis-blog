@@ -11,6 +11,7 @@ namespace AppBundle\Service;
 use AppBundle\Repository\BlogRepository;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use AppBundle\Service\RedisService;
 
 /**
  * Description of BlogService
@@ -20,6 +21,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class BlogService implements ContainerAwareInterface
 {
 
+    CONST HOMEPAGE_BLOGS_KEY = 'home_page_blogs';
     /**
      *
      * @var ContainerInterface
@@ -29,11 +31,30 @@ class BlogService implements ContainerAwareInterface
     public function getAllBlogs()
     {
         /**
+         * @var RedisService
+         */
+        $redis = $this->_container->get('redis');
+
+        $blogsInCache  = $redis->sMembers(self::HOMEPAGE_BLOGS_KEY);
+        if(!empty($blogsInCache))
+        {
+            return $blogsInCache;
+        }
+        
+        /**
          * @var BlogRepository
          */
         $blogRepo = $this->_container->get('blog_repo');
         $blogs = $blogRepo->findAll();
-        return $blogs;
+        
+        $content=[];
+        foreach ($blogs as $blog)
+        {
+            $content[] = $blog->getContent();
+        }
+        $redis->sAdd(self::HOMEPAGE_BLOGS_KEY,$content);
+
+        return $content;
     }
 
     public function setContainer(ContainerInterface $container = null)

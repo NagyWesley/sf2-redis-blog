@@ -24,9 +24,9 @@ class Blog
     /**
      * @var string
      *
-     * @ORM\Column(name="conent", type="string", length=255, nullable=true)
+     * @ORM\Column(name="content", type="string", length=255, nullable=true)
      */
-    private $conent;
+    private $content;
 
     /**
      * @var int
@@ -75,27 +75,27 @@ class Blog
     }
 
     /**
-     * Set conent
+     * Set content
      *
      * @param string $conent
      *
      * @return Blog
      */
-    public function setConent($conent)
+    public function setContent($conent)
     {
-        $this->conent = $conent;
+        $this->content = $content;
 
         return $this;
     }
 
     /**
-     * Get conent
+     * Get content
      *
      * @return string
      */
-    public function getConent()
+    public function getContent()
     {
-        return $this->conent;
+        return $this->content;
     }
 
     /**

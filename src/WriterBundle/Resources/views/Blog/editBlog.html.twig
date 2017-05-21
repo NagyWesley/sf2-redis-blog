@@ -18,5 +18,14 @@
 
 {% endblock %}
 
+{#{% block stylesheets  %}
+<link href="{{ asset('bundles/writer/css/writer.css') }}" rel="stylesheet" />
+{% endblock %}
+#}
+
 {% block stylesheets %}
+    
+    {% stylesheets 'bundles/writer/css/*' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+   {% endstylesheets %}
 {% endblock %}

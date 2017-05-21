@@ -24,7 +24,7 @@
                 <td>{{blog.dateModified|date('Y-m-d')}}</td>
                 <td>{{blog.published}}</td>
                 <td>{{blog.publishingDate|date('Y-m-d')}}</td>
-                <td><a href="/writer/editblog/{{blog.id}}">edit</a></td>
+                <td><a href="{{ path('edit_blog', {'id': blog.id}) }}">edit</a></td>
             </tr>
         {% endfor %}
 

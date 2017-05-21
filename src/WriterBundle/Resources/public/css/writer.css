@@ -10,4 +10,10 @@ and open the template in the editor.
 
 body{
     background-color: rosybrown;
+    font-family: sans-serif;
+}
+
+
+#form_content{
+    width:75%;
 }

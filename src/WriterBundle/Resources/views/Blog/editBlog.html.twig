@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1> {% trans %}Editing Blog{% endtrans %}</h1>
+    <div>id:{{blog.id}}</div>
+    <div>writer:{{blog.writer}}</div>
+    <div>content:{{blog.content}}</div>
+    <div>dateCreated:{{blog.dateCreated|date('Y-m-d')}}</div>
+    <div>dateModified:{{blog.dateModified|date('Y-m-d')}}</div>
+    <div>published:{{blog.published}}</div>
+    <div>publishingDate{{blog.publishingDate|date('Y-m-d')}}</div>
+
+
+
+    {{ form_start(form) }}   
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}

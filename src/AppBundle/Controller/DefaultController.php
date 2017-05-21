@@ -12,7 +12,7 @@ class DefaultController extends Controller
 {
 
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="writer")
      */
     public function indexAction(Request $request)
     {
@@ -21,7 +21,7 @@ class DefaultController extends Controller
          * @var BlogService
          */
         $blogService = $this->get('blog_service');
-        $blogs = $blogService->getAllBlogs();
+        $blogs = $blogService->getHomepageBlogs();
         return $this->render('default/index.html.twig', [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..') . DIRECTORY_SEPARATOR,
                 'blogs' => $blogs

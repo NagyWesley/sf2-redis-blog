@@ -1,3 +1,8 @@
+writer:
+    resource: "@WriterBundle/Controller/"
+    type:     annotation
+    prefix:   /writer
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

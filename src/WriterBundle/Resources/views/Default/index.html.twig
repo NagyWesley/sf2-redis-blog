@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1> {% trans %}Writers Lobby{% endtrans %}</h1>
+    <div> {% trans %}This page {% endtrans %}</div>
+    <table style="width:100%; text-align: center;">
+        <tr>
+            <th>id</th>
+            <th>writer</th>
+            <th>content</th>
+            <th>dateCreated</th>
+            <th>dateModified</th>
+            <th>published</th>
+            <th>publishingDate</th>
+            <th>action</th>
+
+        </tr>
+        {% for blog in blogs%}
+            <tr>
+                <td>{{blog.id}}</td>
+                <td>{{blog.writer}}</td>
+                <td style="text-overflow:ellipsis; width: 40%;">{{blog.content}}</td>
+                <td>{{blog.dateCreated|date('Y-m-d')}}</td>
+                <td>{{blog.dateModified|date('Y-m-d')}}</td>
+                <td>{{blog.published}}</td>
+                <td>{{blog.publishingDate|date('Y-m-d')}}</td>
+                <td><a href="/writer/editblog/{{blog.id}}">edit</a></td>
+            </tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
